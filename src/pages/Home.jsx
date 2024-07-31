@@ -89,35 +89,55 @@ const Home = () => {
 
   return (
     <div id="homepage">
-      <div id="search-container">
-        <label htmlFor="search"> Search </label>
-        <input type="text" name="search"id="search" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)}/>
-      </div>
 
-        <div id="type-container">
-            <label htmlFor="type"> Type: </label>
-            <select name="type" id="type" value={type} onChange={(event) => setType(event.target.value)}>
-                <option value=''> Choose Type... </option>
-                <option value='normal'>normal</option>
-                <option value='fire'>fire</option>
-                <option value='water'>water</option>
-                <option value='grass'>grass</option>
-                <option value='electric'>electric</option>
-                <option value='ice'>ice</option>
-                <option value='fighting'>fighting</option>
-                <option value='poison'>poison</option>
-                <option value='ground'>ground</option>
-                <option value='flying'>flying</option>
-                <option value='psychic'>psychic</option>
-                <option value='bug'>bug</option>
-                <option value='rock'>rock</option>
-                <option value='ghost'>ghost</option>
-                <option value='dragon'>dragon</option>
-                <option value='dark'>dark</option>
-                <option value='steel'>steel</option>
-                <option value='fairy'>fairy</option>            
-            </select>
-        </div>  
+    {/* landing page */}
+    <div id="landing-page">
+        <img src="/2318de57feedc586629ff95b76f98c7b.png" alt="pokemon logo"/>
+    </div>
+
+
+
+
+        {/* search container and type */}
+
+        <div id="search-section-container"> 
+            <h2> Find Your Pokemon! </h2>
+
+            <div id="search-type-container">
+                <div id="search-container">
+                    <label htmlFor="search"> Search </label>
+                    <input type="text" name="search"id="search" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)}/>
+                </div>
+
+                <div id="type-container">
+                    <label htmlFor="type"> Type: </label>
+                    <select name="type" id="type" value={type} onChange={(event) => setType(event.target.value)}>
+                        <option value=''> Choose Type... </option>
+                        <option value='normal'>normal</option>
+                        <option value='fire'>fire</option>
+                        <option value='water'>water</option>
+                        <option value='grass'>grass</option>
+                        <option value='electric'>electric</option>
+                        <option value='ice'>ice</option>
+                        <option value='fighting'>fighting</option>
+                        <option value='poison'>poison</option>
+                        <option value='ground'>ground</option>
+                        <option value='flying'>flying</option>
+                        <option value='psychic'>psychic</option>
+                        <option value='bug'>bug</option>
+                        <option value='rock'>rock</option>
+                        <option value='ghost'>ghost</option>
+                        <option value='dragon'>dragon</option>
+                        <option value='dark'>dark</option>
+                        <option value='steel'>steel</option>
+                        <option value='fairy'>fairy</option>            
+                    </select>
+                </div> 
+            </div> 
+        </div>
+
+      
+      
 
         <div id="pokemon-display-grid">
             {loading ? (
