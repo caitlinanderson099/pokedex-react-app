@@ -8,6 +8,28 @@ import { useNavigate } from "react-router-dom"
 // Import the Loader
 import { Puff } from 'react-loader-spinner'
 
+// set up different colors for type
+  const typeColors = {
+    normal: '#B8B08D',
+    fire: '#EACFB7',
+    water: '#A0C1D1',
+    grass: '#9EBF8F',
+    electric: '#F2E77A',
+    ice: '#A1D2D0',
+    fighting: '#B63D3A',
+    poison: '#B06DAB',
+    ground: '#D6C689',
+    flying: '#B69FEC',
+    psychic: '#E2868B',
+    bug: '#A7BD5B',
+    rock: '#BDAF6E',
+    ghost: '#8D7B9C',
+    dragon: '#8574F8',
+    dark: '#8D7B6F',
+    steel: '#B9B9CC',
+    fairy: '#E3AFC3',
+  };
+
 const Home = () => {
 
     // First thing; set up the context
@@ -105,7 +127,7 @@ const Home = () => {
 
             <div id="search-type-container">
                 <div id="search-container">
-                    <label htmlFor="search"> Search </label>
+                <label htmlFor="search"> Search: </label>
                     <input type="text" name="search"id="search" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)}/>
                 </div>
 
@@ -151,13 +173,13 @@ const Home = () => {
                       item.onSelect()
                       navigate('/pokemon/')
                     }}
-                  >
-                    <img src={item.imageURL} alt={item.name}/>
-                    <div className="pokemon-details"> 
-                        <p className='poke-id'>{item.id}</p>
-                        <h2> • {item.name} • </h2>
-                        <h4>{item.types.join(", ")}</h4>
-                        <button> More Details </button>
+                    >
+                      <img src={item.imageURL} alt={item.name}/>
+                      <div className="pokemon-details"> 
+                          <p className='poke-id'>{item.id}</p>
+                          <h2> • {item.name} • </h2>
+                          <h4>{item.types.join(", ")}</h4>
+                          <button> More Details </button>
                     </div>
                    
                   </div>
