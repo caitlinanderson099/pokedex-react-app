@@ -34,17 +34,30 @@ const SinglePokemon = () => {
   const navigate = useNavigate();
 
   return (
-    <div
-      style={{backgroundColor: typeColors[selectedPokemon.types[0].toLowerCase()]}}
-    >
-      <button onClick={() => navigate(-1)}> Back </button>
-      <h2> {selectedPokemon.name.toUpperCase()} </h2>
-      <p> {selectedPokemon.id} </p>
-      <img src={selectedPokemon.imageURL} alt={selectedPokemon.name + " image"}/>
-      <h3> Type: {selectedPokemon.types.join(", ")} </h3>
-      <h3> Abilities: {selectedPokemon.ability.join(", ")} </h3>
-      <h3> Height: {selectedPokemon.height} </h3>
-      <h3> Weight: {selectedPokemon.weight} </h3>
+    <div className="single-pokemon-page">
+      <div className="single-pokemon-content">
+        <div className="single-page-left">
+        <button onClick={() => navigate(-1)}> Back </button>
+        <div className="image-card">
+          <img src={selectedPokemon.imageURL} alt={selectedPokemon.name + " image"}/>
+          <div className="image-card-details">
+            <p> {selectedPokemon.id} </p>
+            <h2> {selectedPokemon.name.toUpperCase()} </h2>
+            <img src="/pokemon-icon.png" alt="pokemon icon" className="pokemon-icon"/>
+          </div>
+        </div>
+    
+        </div>
+
+        <div className="single-page-right">
+          <h3> Type: {selectedPokemon.types.join(", ")} </h3>
+          <h3> Abilities: {selectedPokemon.ability.join(", ")} </h3>
+          <h3> Height: {selectedPokemon.height}m </h3>
+          <h3> Weight: {selectedPokemon.weight}kg </h3>
+        </div>
+      </div>
+      
+      
     </div>
   )
 }

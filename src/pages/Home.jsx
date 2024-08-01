@@ -8,27 +8,6 @@ import { useNavigate } from "react-router-dom"
 // Import the Loader
 import { Puff } from 'react-loader-spinner'
 
-// set up different colors for type
-  const typeColors = {
-    normal: '#B8B08D',
-    fire: '#EACFB7',
-    water: '#A0C1D1',
-    grass: '#9EBF8F',
-    electric: '#F2E77A',
-    ice: '#A1D2D0',
-    fighting: '#B63D3A',
-    poison: '#B06DAB',
-    ground: '#D6C689',
-    flying: '#B69FEC',
-    psychic: '#E2868B',
-    bug: '#A7BD5B',
-    rock: '#BDAF6E',
-    ghost: '#8D7B9C',
-    dragon: '#8574F8',
-    dark: '#8D7B6F',
-    steel: '#B9B9CC',
-    fairy: '#E3AFC3',
-  };
 
 const Home = () => {
 
@@ -39,7 +18,10 @@ const Home = () => {
 
     //  Set state for the search
     const [searchTerm, setSearchTerm] = useState('')
+    // set up the type
     const [type, setType] = useState('')
+    // set up the moves
+    const [ move, setMove ] = useState('')
     // set up the filtered state
     const [filteredPokemon, setFilteredPokemon] = useState([])
     // set up pokemon state for returned pokemon
@@ -60,13 +42,15 @@ const Home = () => {
               const pokemonResponse = await axios.get(pokemon.url)
               const type = pokemonResponse.data.types.map((typeData) => typeData.type.name)
               const ability = pokemonResponse.data.abilities.map((abilityData) => abilityData.ability.name)
-              const id = pokemonResponse.data.id
+              const move = pokemonResponse.data.moves.slice(0, 3).map((moveData) => moveData.move.name) // by adding .slice(0, 3) it limits the data to just three placements (3 moves instead of all of them)
+              const id = pokemonResponse.data.id 
               return {
                 id: id,
                 name: pokemon.name,
                 imageURL: pokemonResponse.data.sprites.other['official-artwork'].front_default,
                 ability: ability,
                 types: type,
+                moves: move,
                 height: pokemonResponse.data.height,
                 weight: pokemonResponse.data.weight
               }
@@ -103,11 +87,12 @@ const Home = () => {
         const filteredData = pokedex.filter((pokemon) => {
           const nameMatch = pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
           const typeMatch = !type || pokemon.types.includes(type.toLowerCase())
-          return nameMatch && typeMatch
+          const moveMatch = !move || pokemon.moves.includes(move.toLowerCase())
+          return nameMatch && typeMatch && moveMatch
         })
     
         setFilteredPokemon(filteredData)
-      }, [searchTerm, type])
+      }, [searchTerm, type, move])
 
   return (
     <div id="homepage">
@@ -123,7 +108,6 @@ const Home = () => {
         {/* search container and type */}
 
         <div id="search-section-container"> 
-            <h2> Find Your Pokemon! </h2>
 
             <div id="search-type-container">
                 <div id="search-container">
@@ -158,9 +142,6 @@ const Home = () => {
             </div> 
         </div>
 
-      
-      
-
         <div id="pokemon-display-grid">
             {loading ? (
                 <Puff color="#1f1f1f" height={100} width={100}/>
@@ -178,7 +159,8 @@ const Home = () => {
                       <div className="pokemon-details"> 
                           <p className='poke-id'>{item.id}</p>
                           <h2> • {item.name} • </h2>
-                          <h4>{item.types.join(", ")}</h4>
+                          <h3> Type: {item.types.join(", ")} </h3>
+                          <h5> {item.moves.join(", ")} </h5>
                           <button> More Details </button>
                     </div>
                    
