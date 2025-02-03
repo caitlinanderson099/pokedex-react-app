@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Space+Grotesk:wght@300..700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Space+Grotesk:wght@300..700&display=swap');
 /* Global Reset */
 * {
     margin: 0;
@@ -10,7 +9,6 @@
 body {
     background-color: #1f1f1f;
     color: white;
-    /* cursor: grab ; possibly get a custom cursor */
 }
 
 .mb-2 {
@@ -30,10 +28,9 @@ footer {
 
 /* nav */
 #top-nav {
-    background: #1f1f1f;
     display: flex;
     padding: 20px;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 #menu {
@@ -72,7 +69,7 @@ footer {
 
 /* buttons */
 button {
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: bold;
     padding: 10px;
     margin-top: 6px;
@@ -117,7 +114,7 @@ button:hover {
     text-align: center;
     margin-top: 20px;
     font-weight: 700;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 #close-nav-menu {
@@ -146,15 +143,26 @@ button:hover {
     color: white;
 }
 
+.page-title {
+    text-align: center;
+    font-family: "Space Grotesk", sans-serif;
+    z-index: 1;
+    background: linear-gradient(-45deg, #0f0f0f, #202020, #5dd62c, #337418, #f8f8f8);
+    background-size: 400% 400%;
+    width: 100%;
+    padding: 100px;
+    animation: animate 15s ease infinite;
+}
 
-#landing-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-
-    img {
-        width: 30%;
+@keyframes animate {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
     }
 }
 
@@ -201,8 +209,6 @@ button:hover {
 }
 
 
-/* overall styling of the card
-    change sizes inside of the media queries for each device size */
 #pokemon-display-grid {
     display: grid;
     gap: 30px;

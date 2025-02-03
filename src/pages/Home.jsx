@@ -97,14 +97,7 @@ const Home = () => {
   return (
     <div id="homepage">
 
-    {/* landing page */}
-    <div id="landing-page">
-        <img src="/2318de57feedc586629ff95b76f98c7b.png" alt="pokemon logo"/>
-    </div>
-
-
-
-
+      <h1 className="page-title">Pokedex API</h1>
         {/* search container and type */}
 
         <div id="search-section-container"> 
